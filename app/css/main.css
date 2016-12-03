@@ -1,0 +1,53 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.input-group .form-control {
+    padding: 15px 16px;
+}
+
+.bc .act{
+	color: #999999;
+}
+
+.bc > div{
+	display: inline-block;
+    cursor: pointer;
+    padding: 0 10px;
+    color: #0088cc;
+}
+
+.err{
+	    padding: 0 14%;
+}
+
+.err > div{
+	color: red;
+}
+
+.col-lg-12 {
+	border-bottom: 1px solid #e7e7e7;
+	padding: 5px 0;
+}
+
+.col-sm-offset-2 {
+    margin-left: 13.666667%;
+}
+
+.l1{
+	padding:  0 35px;
+}
+
+.l2{
+	padding:  0 70px;
+}
+
+.l3{
+	padding:  0 105px;
+}

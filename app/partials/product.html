@@ -1,0 +1,48 @@
+<div class="container" ng-controller="PageCtrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Product Mart
+               
+            </h1>
+           <div ng-include='"partials/bcrum.html"'></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                        <input type="text" class="form-control" placeholder="Search Product" ng-model="searchProduct">
+                    </div>
+                </div>
+            </form>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            Frequency
+                        </td>
+                        <td>
+                            Amount
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in products | orderBy:sortType:sortReverse | filter:searchProduct">
+                        <td>{{ product.product }}</td>
+                        <td>{{ product.type }}</td>
+                        <td>{{ product.frequency }}</td>
+                        <td>{{ product.amount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

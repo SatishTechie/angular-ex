@@ -1,0 +1,139 @@
+<div class="container" ng-controller="Q2Ctrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+            Q2 Deferred/Promises 
+                
+            </h1>
+            <h1>
+            <small>Demonstrate $q service, deferred and promises in small angular program that 
+uses the following public API. </small>
+</h1>
+            <div ng-include='"partials/bcrum.html"'></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Example to demonstrate promise </h3>
+            <div class="l1">$scope.doPromiseCall = function() {</div>
+            <div class="l2">$scope.promiseContent = "Fetching data...";</div>
+            <div class="l2">var promise = $http.get(url);</div>
+            <div class="l2">promise.then(</div>
+            <div class="l2"> function(result) {</div>
+            <div class="l3"> $scope.promiseContent = result.data.query.results.channel.description;</div>
+            <div class="l2"> },</div>
+            <div class="l2"> function(error) {</div>
+            <div class="l3"> $scope.promiseContent = error;</div>
+            <div class="l2"> },</div>
+            <div class="l2"> function(progress) {</div>
+            <div class="l3"> $scope.promiseContent = " call is in progress ";</div>
+            <div class="l2"> });</div>
+            <div class="l1">}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-success" ng-click="doPromiseCall()">
+                Make a promise call
+            </button>
+            <h4>{{promiseContent}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Service which return defer object</h3>
+            <div> app.service('forcastService', function($http, $q) {</div>
+            <div class="l1"> this.getForcast = function() {</div>
+            <div class="l2"> var q = $q.defer();</div>
+            <div class="l2"> $http.get(url).then(function(result) {</div>
+            <div class="l2"> q.resolve(result);</div>
+            <div class="l2"> });</div>
+            <div class="l2"> return q.promise;</div>
+            <div class="l1"> }</div>
+            <div class="l1">this.getAllForcast = function() {</div>
+            <div class="l2"> var urlCalls = [];</div>
+            <div class="l2"> for (var i = 0; i
+                < 50; i++) {</div>
+                    <div class="l3"> urlCalls.push($http.get(url));</div>
+                    <div class="l2"> }</div>
+                    <div class="l2">$q.all(urlCalls)</div>
+                    <div class="l2"> .then(</div>
+                    <div class="l2"> function(results) {</div>
+                    <div class="l3"> deferred.resolve(results);</div>
+                    <div class="l2"> },</div>
+                    <div class="l2"> function(errors) {</div>
+                    <div class="l3"> deferred.reject(errors);</div>
+                    <div class="l2"> },</div>
+                    <div class="l2"> function(progress) {</div>
+                    <div class="l3"> deferred.update(progress);</div>
+                    <div class="l2"> });</div>
+                    <div class="l2"> return deferred.promise;</div>
+                    <div class="l1"> }</div>
+                    <div class="">});</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Example to demonstrate promise resolve and reject </h3>
+                <div class="l1"> $scope.doQPromiseCall = function() {</div>
+                <div class="l2">var promise = forcastService.getForcast();</div>
+                <div class="l2">$scope.promiseQContent = "Fetching data...";</div>
+                <div class="l2">promise.then(</div>
+                <div class="l2"> function(result) {</div>
+                <div class="l3"> $scope.promiseQContent = result.data.query.results.channel.description;</div>
+                <div class="l2"> },</div>
+                <div class="l2"> function(error) {</div>
+                <div class="l3"> $scope.promiseQContent = error;</div>
+                <div class="l2"> },</div>
+                <div class="l2"> function(progress) {</div>
+                <div class="l3"> $scope.promiseQContent = " call is in progress ";</div>
+                <div class="l2">}).catch(</div>
+                <div class="l2">function(failure) {</div>
+                <div class="l3"> $scope.promiseQContent = failure;</div>
+                <div class="l2">}).finally(function() {</div>
+                <div class="l3"> console.log("Call finished.")</div>
+                <div class="l2"> })</div>
+                <div class="l1">}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-success" ng-click="doQPromiseCall()">
+                    Make a Q promise call
+                </button>
+                <h4>{{promiseQContent}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Example to demonstrate $q.all </h3>
+                <div class="l1"> $scope.doQAllPromiseCall = function() {</div>
+                <div class="l2">var promise = forcastService.getAllForcast();</div>
+                <div class="l2">$scope.promiseQAllContent = "Fetching data..."</div>
+                <div class="l2">promise.then(</div>
+                <div class="l2">function(result) {</div>
+                <div class="l3"> $scope.promiseQAllContent = "Got " + result.length + " set of data.";</div>
+                <div class="l2">},</div>
+                <div class="l2">function(error) {</div>
+                <div class="l3">$scope.promiseQAllContent = error;</div>
+                <div class="l2">},</div>
+                <div class="l2">function(progress) {</div>
+                <div class="l3">$scope.promiseQAllContent = " call is in progress ";</div>
+                <div class="l2">}).catch(</div>
+                <div class="l2">function(failure) {</div>
+                <div class="l3">$scope.promiseQAllContent = failure;</div>
+                <div class="l2">}).finally(function() {</div>
+                <div class="l3"> console.log("Call finished.")</div>
+                <div class="l2"> })</div>
+                <div class="l1">}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-success" ng-click="doQAllPromiseCall()">
+                    Make a Q ALL promise call
+                </button>
+                <h4>{{promiseQAllContent}}</h4>
+            </div>
+        </div>
+    </div>

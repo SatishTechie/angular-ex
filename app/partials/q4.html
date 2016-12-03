@@ -1,0 +1,42 @@
+<div class="container" ng-controller="Q4Ctrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Q4. CODING Closure 
+                
+            </h1>
+            <h1><small>Demonstrate closure by example</small></h1>
+            <div ng-include='"partials/bcrum.html"'></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="l1">function bookStore(){</div>
+            <div class="l2">var books = ["Gandhi", "Washington", "Churchill", "Mandela"];</div>
+            <div class="l2">return {</div>
+            <div class="l2">next :function () {</div>
+            <div class="l3">console.log( i < books.length ? books[i++] : "Go previous") ;</div>
+            <div class="l2">},</div>
+            <div class="l2">previous :function () {</div>
+            <div class="l3">	console.log( i > 0 ? i >= books.length ? books[i = i - 1] : books[--i] : "Go next") ;</div>
+            <div class="l2">}</div>
+            <div class="l2">}</div>
+            <div class="l1">}</div>
+            <div class="l1">var bookStore =  bookStore();</div>
+            <div class="l1">bookStore.next();</div>
+            <div class="l1">bookStore.next();</div>
+            <div class="l1">bookStore.previous();</div>
+            <div class="l1">bookStore.previous();</div>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-success" ng-click="bookStore.previous()">
+                    Previous
+                </button>
+                 <button type="button" class="btn btn-success" ng-click="bookStore.next()">
+                    Next
+                </button>
+                <h4>{{bookName}}</h4>
+            </div>
+        </div>
+</div>

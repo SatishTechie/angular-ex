@@ -1,0 +1,49 @@
+<div class="container" ng-controller="Q3Ctrl">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Q3. CODING ­ Functional Programming Style 
+               
+            </h1>
+            <h1> <small>Using Array iteration methods, check if all inputs and selects on a form 
+have a value</small></h1>
+            <div ng-include='"partials/bcrum.html"'></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <form id="userForm" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="inputName3" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="inputName3" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="selectRole" class="col-sm-2 control-label">Role</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="selectRole" placeholder="Role">
+                            <option>Admin</option>
+                            </option>User</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" ng-click="validateFields('userForm')">Validate</button>
+                    </div>
+                </div>
+            </form>
+                <div class="err">
+
+                    <h4 ng-bind-html="error"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
